@@ -108,6 +108,34 @@ to anon
 with check (true);
 ```
 
+### Create the `memories` table
+
+```sql
+create table memories (
+  id uuid default gen_random_uuid() primary key,
+  created_at timestamp default now(),
+  name text not null,
+  category text not null,
+  caption text,
+  photo_url text,
+  approved boolean default false
+);
+
+alter table memories enable row level security;
+
+create policy "Anyone can submit a memory"
+on memories for insert
+to anon
+with check (true);
+
+create policy "Anyone can view approved memories"
+on memories for select
+to anon
+using (approved = true);
+```
+
+Admin workflow: Go to Supabase Dashboard → Table Editor → `memories` → set `approved = true` on any submission to publish it to the gallery.
+
 ### Create the storage bucket
 
 Supabase Dashboard → Storage → New Bucket → name: `photos` → set to **Public**
