@@ -14,12 +14,28 @@ function ClassmateCard({ person, index }) {
     >
       <div className="card" style={{ padding: 24, height: '100%' }}>
         <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', marginBottom: 16 }}>
-          <div
-            className="avatar"
-            style={{ background: person.color, flexShrink: 0 }}
-          >
-            {person.initials}
-          </div>
+          {person.photo_url ? (
+            <img
+              src={person.photo_url}
+              alt={person.name}
+              style={{
+                width: 80,
+                height: 80,
+                borderRadius: '50%',
+                objectFit: 'cover',
+                objectPosition: 'top center',
+                flexShrink: 0,
+                border: `2px solid ${person.color}40`,
+              }}
+            />
+          ) : (
+            <div
+              className="avatar"
+              style={{ background: person.color, flexShrink: 0 }}
+            >
+              {person.initials}
+            </div>
+          )}
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: 2 }}>{person.name}</div>
             {person.maiden_name && (

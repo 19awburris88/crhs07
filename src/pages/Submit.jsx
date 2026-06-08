@@ -219,13 +219,25 @@ export default function Submit() {
 
             {/* Section: Photos */}
             <FormSection title="PHOTOS" number="04">
+              <div style={{
+                background: 'rgba(200,16,46,0.05)',
+                border: '1px solid rgba(200,16,46,0.15)',
+                borderRadius: 6,
+                padding: '10px 14px',
+                marginBottom: 16,
+                fontSize: '0.82rem',
+                color: 'var(--silver)',
+                lineHeight: 1.5,
+              }}>
+                📸 <strong style={{ color: 'var(--off-white)' }}>Headshot tips:</strong> Face and shoulders, looking at the camera, good lighting. Square crop works best. This is what shows on your directory card.
+              </div>
               <div className="grid-2" style={{ gap: 16 }}>
                 <div className="form-group">
-                  <label>Current Photo</label>
+                  <label>Current Headshot</label>
                   <PhotoUpload
                     preview={photoPreview}
                     onChange={handlePhoto}
-                    label="Upload a current photo"
+                    label="Face & shoulders · good lighting"
                   />
                 </div>
                 <div className="form-group">
@@ -239,7 +251,7 @@ export default function Submit() {
                 </div>
               </div>
               <p style={{ color: 'rgba(191,195,199,0.4)', fontSize: '0.75rem', marginTop: 10 }}>
-                Photos are used for the Class Directory and Then & Now section. JPG or PNG, max 10MB.
+                Headshot appears on your directory card. Senior photo is used for Then & Now. JPG or PNG, max 10MB.
               </p>
             </FormSection>
 
